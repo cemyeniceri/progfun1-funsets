@@ -21,6 +21,8 @@ object FunSets {
     */
   def singletonSet(elem: Int): Set = set => set == elem
 
+  def boundSet(bound: Int): Set = set => set <= bound && set >= -bound
+
 
 
   /**
@@ -87,7 +89,7 @@ object FunSets {
   /**
    * Prints the contents of a set on the console.
    */
-  def printSet(s: Set) {
-    println(toString(s))
+  def printSet(description : String, s: Set) {
+    println(description + toString(s))
   }
 }
