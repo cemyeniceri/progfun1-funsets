@@ -188,12 +188,15 @@ class FunSetSuite extends FunSuite {
   test("exists should return whether there exists a bounded integer within `s` that satisfies `p`."){
     new TestSets {
 
-      printSet("x => x%2 == 0 : ", x => x%2 == 0)
-      printSet("x => x%3 == 0 : ", x => x%3 == 0)
-      printSet("x => x%6 == 0 : ", x => x%6 == 0)
+      printSet("x => x < 4 : ", x => x < 4)
+      printSet("x => x < 2 : ", x => x < 2)
+      printSet("x => x < 0 : ", x => x < 0)
 
-      assert(!exists(x => x%2 == 0, x => x%3 == 0 ))
-      assert(exists(x => x%6 == 0, x => x%3 == 0 ))
+      val s = union(union(s1, s2), s3)
+
+      assert(exists(s, x => x < 4))
+      assert(exists(s, x => x < 2))
+      assert(!exists(s, x => x < 0))
     }
   }
 
